@@ -1,10 +1,12 @@
 package school.cesar.nib.entities;
 
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class Poupanca extends Conta {
 
-    public void renderJuros(){
+    public void atualizarSaldoComRendimentos(double taxa){
         double saldoAtual = getSaldo();
-        setSaldo( saldoAtual * 1.005  );
+        setSaldo( saldoAtual * taxa  );
     }
 }

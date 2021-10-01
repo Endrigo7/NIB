@@ -13,9 +13,7 @@ public class ClienteGui {
         clienteService = new ClienteService();
     }
 
-    public void exibeMenu(){
-        Scanner leTeclado = new Scanner(System.in);
-
+    public void exibeMenu(Scanner leTeclado){
         int opcaoMenu = 0;
 
         do{
@@ -39,8 +37,6 @@ public class ClienteGui {
 
         }while (opcaoMenu != 3);
 
-        System.out.println("Obrigado por usar o NIB");
-        leTeclado.close();
     }
 
     private void salvar(Scanner leTeclado){
@@ -50,7 +46,7 @@ public class ClienteGui {
         System.out.println("Digite o nome do Cliente");
         String nome = leTeclado.next();
 
-        Cliente cliente = new Cliente(cpf, nome, null);
+        Cliente cliente = new Cliente(cpf, nome);
 
         boolean clienteFoiCadastrado = clienteService.salvar(cliente);
 
