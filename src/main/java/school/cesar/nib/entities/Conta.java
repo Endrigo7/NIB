@@ -8,7 +8,7 @@ import java.util.Random;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Conta {
+public abstract class Conta {
 
     private Cliente cliente;
     private String numero;
@@ -35,6 +35,12 @@ public class Conta {
     public void debitar(double valor){
         saldo -= valor;
     }
+
+    public double exibirSaldo(){
+        return  getSaldo();
+    }
+
+    public abstract void renderJuros();
 
     //TODO fazer o transferir.
 }

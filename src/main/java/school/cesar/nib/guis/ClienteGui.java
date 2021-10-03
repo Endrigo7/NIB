@@ -1,6 +1,7 @@
 package school.cesar.nib.guis;
 
 import school.cesar.nib.entities.Cliente;
+import school.cesar.nib.exceptions.CpfInvalidoException;
 import school.cesar.nib.services.ClienteService;
 
 import java.util.Scanner;
@@ -9,14 +10,14 @@ public class ClienteGui {
 
     private ClienteService clienteService;
 
-    public ClienteGui(){
+    public ClienteGui() {
         clienteService = new ClienteService();
     }
 
-    public void exibeMenu(Scanner leTeclado){
+    public void exibeMenu(Scanner leTeclado) {
         int opcaoMenu = 0;
 
-        do{
+        do {
             System.out.println("Selecione a opção desejada");
             System.out.println(" 1 - Cadastrar Cliente");
             System.out.println(" 2 - Consultar Cliente");
@@ -24,7 +25,7 @@ public class ClienteGui {
 
             opcaoMenu = leTeclado.nextInt();
 
-            switch (opcaoMenu){
+            switch (opcaoMenu) {
                 case 1:
                     salvar(leTeclado);
                     break;
@@ -35,11 +36,11 @@ public class ClienteGui {
                     break;
             }
 
-        }while (opcaoMenu != 3);
+        } while (opcaoMenu != 3);
 
     }
 
-    private void salvar(Scanner leTeclado){
+    private void salvar(Scanner leTeclado) {
         System.out.println("Digite o cpf do cliente");
         String cpf = leTeclado.next();
 
@@ -48,23 +49,22 @@ public class ClienteGui {
 
         Cliente cliente = new Cliente(cpf, nome);
 
-        boolean clienteFoiCadastrado = clienteService.salvar(cliente);
-
-        if(clienteFoiCadastrado){
+        try {
+            clienteService.salvar(cliente);
             System.out.println("O cliente foi cadastrado com sucesso");
-        }else{
-            System.out.println("Erro ao cadastrar cliente. Verifique os dados e tente novamente.");
+        } catch (CpfInvalidoException e) {
+            System.out.println("Erro ao cadastrar cliente. " + e.getMessage());
         }
     }
 
-    private void buscar(Scanner leTeclado){
+    private void buscar(Scanner leTeclado) {
         System.out.println("Digite o cpf");
         String cpf = leTeclado.next();
 
         Cliente cliente = clienteService.buscar(cpf);
-        if(cliente == null){
+        if (cliente == null) {
             System.out.println("Cpf não encontrado");
-        }else{
+        } else {
             System.out.println("Cliente: " + cliente);
         }
     }

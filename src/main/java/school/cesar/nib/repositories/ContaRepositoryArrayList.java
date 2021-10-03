@@ -5,17 +5,17 @@ import school.cesar.nib.entities.Conta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContaRepository {
+public class ContaRepositoryArrayList {
 
-    private static final ContaRepository INSTANCIA = new ContaRepository();
+    private static final ContaRepositoryArrayList INSTANCIA = new ContaRepositoryArrayList();
 
     private List<Conta> contas;
 
-    private ContaRepository(){
+    private ContaRepositoryArrayList(){
         contas = new ArrayList<>();
     }
 
-    public static ContaRepository getInstancia(){
+    public static ContaRepositoryArrayList getInstancia(){
         return INSTANCIA;
     }
 

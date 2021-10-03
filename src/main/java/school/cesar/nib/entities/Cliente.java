@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class Cliente extends RuntimeException {
 
     private String cpf;
     private String nome;
-
 }

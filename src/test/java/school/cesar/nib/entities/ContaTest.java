@@ -7,9 +7,9 @@ public class ContaTest {
 
     @Test
     public void deveIncrementarOSaldoEm20QuandoValorFor20(){
-        Conta conta = new Conta();
-        conta.creditar(20);
-        Assert.assertEquals(120.0, conta.getSaldo(), 0);
+        Poupanca poupanca = new Poupanca();
+        poupanca.creditar(20);
+        Assert.assertEquals(120.0, poupanca.getSaldo(), 0);
     }
 
 }
